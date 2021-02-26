@@ -15,6 +15,26 @@ export default class LoginScreen extends Component {
       
       onLogin() {
         const { username, password } = this.state;
+
+        try{
+              
+          fetch("http://localhost:3000/user/login",{
+            
+             user:({
+                 username: username,
+                 password: password,
+                 
+             })
+
+         },{withCredentials: true})
+         .then(response =>{
+             console.log("login response",response);
+         })
+         
+   
+}catch(error){
+   alert(error)
+}
     
         this.props.navigation.navigate("DashboardScreen");
       }
